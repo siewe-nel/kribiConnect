@@ -57,7 +57,7 @@ const ClientProfile = () => {
       setUpdating(true);
       try {
           // Appel à la nouvelle route backend
-          const res = await axios.put(`http://localhost:5000/api/auth/user/${user.id}`, editData);
+          const res = await axios.put(`https://kribi-connect-backend.vercel.app/api/auth/user/${user.id}`, editData);
           
           // Mise à jour du contexte local (pour que le header change tout de suite)
           // On garde le token actuel (récupéré du localStorage)

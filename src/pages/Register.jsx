@@ -38,7 +38,7 @@ const Register = () => {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', { name, email, password, role });
+      const res = await axios.post('https://kribi-connect-backend.vercel.app/api/auth/register', { name, email, password, role });
       login(res.data.user, res.data.token);
       navigate('/');
     } catch (err) {

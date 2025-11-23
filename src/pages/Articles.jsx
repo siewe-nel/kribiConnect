@@ -43,8 +43,8 @@ const Articles = () => {
       try {
         // On lance les deux requêtes en parallèle
         const [resServices, resProviders] = await Promise.all([
-            axios.get('http://localhost:5000/api/services'),
-            axios.get('http://localhost:5000/api/auth/providers')
+            axios.get('https://kribi-connect-backend.vercel.app/api/services'),
+            axios.get('https://kribi-connect-backend.vercel.app/api/auth/providers')
         ]);
 
         // On ajoute un tag 'type' pour les distinguer

@@ -36,16 +36,16 @@ const ProviderProfile = () => {
   const fetchProviderData = async () => {
       try {
         // 1. Profil (renvoie maintenant averageRating calculé)
-        const resUser = await axios.get(`http://localhost:5000/api/auth/user/${id}`);
+        const resUser = await axios.get(`https://kribi-connect-backend.vercel.app/api/auth/user/${id}`);
         setProvider(resUser.data);
 
         // 2. Services
-        const resServices = await axios.get('http://localhost:5000/api/services');
+        const resServices = await axios.get('https://kribi-connect-backend.vercel.app/api/services');
         const myServices = resServices.data.filter(s => s.providerId === parseInt(id));
         setProviderServices(myServices);
 
         // 3. Avis
-        const resReviews = await axios.get(`http://localhost:5000/api/reviews/${id}`);
+        const resReviews = await axios.get(`https://kribi-connect-backend.vercel.app/api/reviews/${id}`);
         setReviews(resReviews.data);
         
         setLoading(false);
@@ -73,7 +73,7 @@ const ProviderProfile = () => {
 
       setSubmittingReview(true);
       try {
-          await axios.post('http://localhost:5000/api/reviews', {
+          await axios.post('https://kribi-connect-backend.vercel.app/api/reviews', {
               targetUserId: id,
               reviewerId: user.id,
               rating: newRating,
@@ -107,7 +107,7 @@ const ProviderProfile = () => {
             Array.from(imageFiles).forEach(file => { formData.append('images', file); });
         }
 
-        await axios.post('http://localhost:5000/api/services', formData, {
+        await axios.post('https://kribi-connect-backend.vercel.app/api/services', formData, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
         

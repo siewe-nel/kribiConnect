@@ -31,7 +31,7 @@ const Messagerie = () => {
   const fetchContacts = async () => {
       if (!user) return;
       try {
-          const res = await axios.get(`http://localhost:5000/api/messages/conversations/${user.id}`);
+          const res = await axios.get(`https://kribi-connect-backend.vercel.app/api/messages/conversations/${user.id}`);
           setContacts(res.data);
       } catch (err) {
           console.error("Erreur chargement contacts", err);
@@ -59,7 +59,7 @@ const Messagerie = () => {
         } else {
             // Sinon on charge ses infos pour l'ajouter temporairement à la liste
             try {
-                const res = await axios.get(`http://localhost:5000/api/auth/user/${targetId}`);
+                const res = await axios.get(`https://kribi-connect-backend.vercel.app/api/auth/user/${targetId}`);
                 const newUser = res.data;
                 const newContact = {
                     id: newUser.id,
@@ -95,7 +95,7 @@ const Messagerie = () => {
     if(messages.length === 0 && !isPolling) setLoadingMessages(true);
     
     try {
-      const response = await axios.get(`http://localhost:5000/api/messages/${user.id}/${contactId}`);
+      const response = await axios.get(`https://kribi-connect-backend.vercel.app/api/messages/${user.id}/${contactId}`);
       
       // Gestion du format de réponse { messages: [], partnerOnline: bool }
       const data = response.data.messages || response.data;
@@ -150,7 +150,7 @@ const Messagerie = () => {
             productContext: productContext ? JSON.stringify(productContext) : null
         };
 
-        const response = await axios.post('http://localhost:5000/api/messages', payload);
+        const response = await axios.post('https://kribi-connect-backend.vercel.app/api/messages', payload);
         playSound();
         
         // Mise à jour Optimiste (on ajoute tout de suite)
@@ -184,7 +184,7 @@ const Messagerie = () => {
     formData.append('content', 'Fichier envoyé'); 
 
     try {
-        const response = await axios.post('http://localhost:5000/api/messages', formData, {
+        const response = await axios.post('https://kribi-connect-backend.vercel.app/api/messages', formData, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
         playSound();

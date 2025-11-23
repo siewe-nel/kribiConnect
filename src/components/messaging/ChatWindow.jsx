@@ -108,7 +108,7 @@ const ChatWindow = ({ activeContact, messages, onSend, onUpload, pendingProductC
         {messages.map((msg) => {
              const isFile = msg.text && msg.text.startsWith('FILE:');
              const fileName = isFile ? msg.text.replace('FILE:', '') : '';
-             const fileUrl = isFile ? `http://localhost:5000/uploads/${fileName}` : '';
+             const fileUrl = isFile ? `https://kribi-connect-backend.vercel.app/uploads/${fileName}` : '';
 
             return (
                 <div key={msg.id} className={`d-flex mb-3 ${msg.isMe ? 'justify-content-end' : 'justify-content-start'}`}>

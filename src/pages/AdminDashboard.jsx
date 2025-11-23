@@ -79,7 +79,7 @@ const UserManager = ({ role, title, icon }) => {
     const fetchUsers = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:5000/api/admin/users/${role}`);
+            const res = await axios.get(`https://kribi-connect-backend.vercel.app/api/admin/users/${role}`);
             setUsers(res.data);
         } catch (error) {
             console.error(error);
@@ -97,10 +97,10 @@ const UserManager = ({ role, title, icon }) => {
         e.preventDefault();
         try {
             if (isEditing) {
-                await axios.put(`http://localhost:5000/api/admin/users/${editId}`, formData);
+                await axios.put(`https://kribi-connect-backend.vercel.app/api/admin/users/${editId}`, formData);
                 alert("Modifié avec succès");
             } else {
-                await axios.post('http://localhost:5000/api/admin/users', formData);
+                await axios.post('https://kribi-connect-backend.vercel.app/api/admin/users', formData);
                 alert("Créé avec succès");
             }
             setShowModal(false);
@@ -115,7 +115,7 @@ const UserManager = ({ role, title, icon }) => {
     const handleDelete = async (id) => {
         if(window.confirm("Supprimer cet utilisateur définitivement ?")) {
             try {
-                await axios.delete(`http://localhost:5000/api/admin/users/${id}`);
+                await axios.delete(`https://kribi-connect-backend.vercel.app/api/admin/users/${id}`);
                 fetchUsers();
             } catch (err) { alert("Erreur suppression"); }
         }
@@ -231,7 +231,7 @@ const DashboardStats = () => {
     const [stats, setStats] = useState({ totalUsers: 0, services: 0, providers: 0, admins: 0, clients: 0 });
     
     useEffect(() => {
-        axios.get('http://localhost:5000/api/admin/stats')
+        axios.get('https://kribi-connect-backend.vercel.app/api/admin/stats')
             .then(res => setStats(res.data))
             .catch(err => console.error(err));
     }, []);

@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const fetchHomeData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/services?limit=4');
+        const response = await axios.get('https://kribi-connect-backend.vercel.app/api/services?limit=4');
         setServices(response.data.slice(0, 4));
         setLoading(false);
       } catch (error) {
