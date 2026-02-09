@@ -23,12 +23,12 @@ const Footer = () => {
           </Col>
           <Col md={4}>
             <h5>Contact</h5>
-            <p className="small text-secondary">support@kribiconnect.cm</p>
-            <p className="small text-secondary">+237 600 00 00 00</p>
+            <p className="small text-secondary">Ngatchnel1@gmail.com</p>
+            <p className="small text-secondary">+237 658 82 43 82</p>
           </Col>
         </Row>
         <hr className="border-secondary" />
-        <p className="text-center small text-secondary mb-0">© 2023 Kribiconnect. Tous droits réservés.</p>
+        <p className="text-center small text-secondary mb-0">© 2026 Kribiconnect. Tous droits réservés.</p>
       </Container>
     </footer>
   );
